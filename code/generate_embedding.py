@@ -7,21 +7,19 @@ from io import BytesIO
 from torchvision import models, transforms
 from sentence_transformers import SentenceTransformer
 
-# Load dataset
-file_path = r"..\data\VICR_Sample250.csv"  # Update path if needed
+# Loading dataset
+file_path = r"..\data\VICR_Sample250.csv"  
 df = pd.read_csv(file_path)
 
-# Compute rounded average rating
+# creating rounded rating
 rating_columns = ["ratings", "rating_2", "rating_3", "rating_4", "rating_5", "rating_6", "rating_7"]
 df["Rating"] = df[rating_columns].mean(axis=1).round().astype(int)
-
-# Drop rows with missing images or captions before processing
 df.dropna(subset=["image", "caption"], inplace=True)
 
 # Load ResNet-50 for image embeddings (Pretrained on ImageNet)
-device = "cpu"  # Using CPU only
+device = "cpu"  
 resnet_model = models.resnet50(pretrained=True)
-resnet_model = resnet_model.eval()  # Set model to evaluation mode
+resnet_model = resnet_model.eval()  
 image_transform = transforms.Compose([
     transforms.Resize((224, 224)),
     transforms.ToTensor(),
@@ -45,7 +43,7 @@ def preprocess_image(image_url):
 def get_image_embedding(image):
     if image is None:
         return None  # Return None instead of NaN
-    image_tensor = image_transform(image).unsqueeze(0)  # Add batch dimension
+    image_tensor = image_transform(image).unsqueeze(0)  
     with torch.no_grad():
         embedding = resnet_model(image_tensor).numpy().flatten()
     return embedding
@@ -53,7 +51,7 @@ def get_image_embedding(image):
 # Generate text embedding using Sentence Transformers
 def get_text_embedding(caption):
     if not isinstance(caption, str):
-        return None  # Return None instead of NaN
+        return None  
     with torch.no_grad():
         embedding = text_model.encode(caption)
     return embedding
@@ -73,8 +71,6 @@ for index, row in df.iterrows():
 # Add embeddings to DataFrame
 df["image_embedding"] = image_embeddings
 df["caption_embedding"] = caption_embeddings
-
-# Drop rows with missing embeddings
 df_cleaned = df.dropna(subset=["image_embedding", "caption_embedding"])
 
 # Convert embeddings to lists for CSV storage
