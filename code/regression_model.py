@@ -1,27 +1,35 @@
-import pandas as pd
+import os
 import numpy as np
 import tensorflow as tf
+import pandas as pd
+import matplotlib.pyplot as plt
 from tensorflow.keras.regularizers import l2
-from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 from scipy.stats import pearsonr, spearmanr
-import os
-import matplotlib.pyplot as plt
 
-# Load dataset
-file_path = r"..\data\VICR_Sample250_Cleaned.csv"
+# 设定随机种子，确保可复现性
+np.random.seed(42)
+tf.random.set_seed(42)
+os.environ['PYTHONHASHSEED'] = '42'
+os.environ['TF_DETERMINISTIC_OPS'] = '1'
+os.environ['TF_CUDNN_DETERMINISTIC'] = '1'
+
+# 读取数据集
+file_path = r"C:\Users\29049\Desktop\新建文件夹\Final_VICR.csv"
 df = pd.read_csv(file_path)
 
+# 解析文本嵌入向量
 df["Concatnated_image_caption"] = df["Concatnated_image_caption"].apply(lambda x: np.array(eval(x)))
 
-# Normalize ratings between 0-1
+# 归一化评分
 df["Rating"] = (df["Rating"] - df["Rating"].min()) / (df["Rating"].max() - df["Rating"].min())
 
-# Extract features (X) and target variable (y)
+# 提取特征和目标值
 X = np.vstack(df["Concatnated_image_caption"].values)
 y = df["Rating"].values.reshape(-1, 1)
 
+# 生成额外的统计特征
 def generate_ranking_features(X):
     mean_features = np.mean(X, axis=1, keepdims=True)
     std_features = np.std(X, axis=1, keepdims=True)
@@ -31,28 +39,32 @@ def generate_ranking_features(X):
 
 X = generate_ranking_features(X)
 
-
+# 归一化特征
 scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
-# Split dataset train (80%) and test (20%)
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+# **固定划分训练集和测试集（前 80% 训练，后 20% 测试）**
+num_samples = len(X)
+split_index = int(0.8 * num_samples)
 
-# Label Smoothing (prevent overfitting)
+X_train, X_test = X[:split_index], X[split_index:]
+y_train, y_test = y[:split_index], y[split_index:]
+
+# 标签平滑处理（防止过拟合）
 y_train = y_train * 0.9 + 0.05
 
-# Custom Ranking Penalized MAE Loss
+# 自定义损失函数：排名惩罚的 MAE
 def ranking_penalized_mae(y_true, y_pred):
     mae = tf.keras.losses.MeanAbsoluteError()(y_true, y_pred)
 
-    # Rank Penalty: Penalizes incorrect ranking relationships
+    # 排名惩罚项
     y_true_diff = tf.expand_dims(y_true, axis=1) - tf.expand_dims(y_true, axis=0)
     y_pred_diff = tf.expand_dims(y_pred, axis=1) - tf.expand_dims(y_pred, axis=0)
     rank_penalty = tf.reduce_mean(tf.square(tf.sign(y_true_diff) - tf.sign(y_pred_diff)))
 
-    return mae + 0.3 * rank_penalty  # Increased weight of ranking penalty
+    return mae + 0.3 * rank_penalty  # 增强排名惩罚权重
 
-# Define Model with Optimized Architecture
+# 定义模型
 def build_model(input_shape):
     model = tf.keras.Sequential([
         tf.keras.layers.Dense(2048, kernel_regularizer=l2(1e-5), input_shape=input_shape),
@@ -79,7 +91,7 @@ def build_model(input_shape):
         tf.keras.layers.LeakyReLU(alpha=0.1),
         tf.keras.layers.BatchNormalization(),
 
-        tf.keras.layers.Dense(1, activation=None)  
+        tf.keras.layers.Dense(1, activation=None)
     ])
 
     initial_learning_rate = 0.001
@@ -94,19 +106,19 @@ def build_model(input_shape):
 
     return model
 
-# Build and compile model
+# 构建和编译模型
 model = build_model((X_train.shape[1],))
 
-# Ensure checkpoint directory exists
+# 确保 checkpoint 目录存在
 checkpoint_path = "checkpoint/image_caption.keras"
 os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
 
-# Define callbacks
+# 定义回调函数
 reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', patience=8, factor=0.3, min_lr=1e-6, verbose=1)
 checkpoint = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path, monitor="val_loss", save_best_only=True, verbose=1)
 early_stopping = tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=15, verbose=1, restore_best_weights=True)
 
-# Train the model
+# 训练模型
 history = model.fit(
     X_train, y_train,
     validation_data=(X_test, y_test),
@@ -116,26 +128,26 @@ history = model.fit(
     verbose=1
 )
 
-# Load best model after training
+# 载入最佳模型
 print("\nLoading best checkpoint model...")
 model = tf.keras.models.load_model(checkpoint_path, custom_objects={"ranking_penalized_mae": ranking_penalized_mae})
 
-# Make predictions
+# 预测测试集
 y_pred = model.predict(X_test).flatten()
 
-# Compute evaluation metrics
+# 计算评估指标
 mse = mean_squared_error(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 pearson_corr, _ = pearsonr(y_test.flatten(), y_pred.flatten())
 spearman_corr, _ = spearmanr(y_test.flatten(), y_pred.flatten())
 
-# results
+# 输出结果
 print(f"Mean Squared Error (MSE): {mse:.4f}")
 print(f"Mean Absolute Error (MAE): {mae:.4f}")
 print(f"Pearson Correlation: {pearson_corr:.4f}")
 print(f"Spearman Correlation: {spearman_corr:.4f}")
 
-# Plot Training & Validation Loss
+# 绘制训练 & 验证损失曲线
 plt.figure(figsize=(10, 5))
 plt.plot(history.history['loss'], label='Train Loss')
 plt.plot(history.history['val_loss'], label='Validation Loss')
