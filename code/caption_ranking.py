@@ -6,30 +6,27 @@ from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr, spearmanr
 
 # Load data
-df = pd.read_csv("../data/VICR_image_duplicates_diff_rating.csv")
+df = pd.read_csv("../data/VICR_entire.csv")
 df["Concatnated_image_caption"] = df["Concatnated_image_caption"].apply(lambda x: np.array(eval(x)))
 df["Rating"] = (df["Rating"] - df["Rating"].min()) / (df["Rating"].max() - df["Rating"].min())
 
 pairs = []
-
 for _, group in df.groupby("image_embedding"):
-    if len(group) != 2:
+    if len(group) < 2:
         continue
+    items = group.to_dict("records")
+    for i in range(len(items)):
+        for j in range(i + 1, len(items)):
+            vec1 = items[i]["Concatnated_image_caption"]
+            vec2 = items[j]["Concatnated_image_caption"]
+            rating1 = items[i]["Rating"]
+            rating2 = items[j]["Rating"]
+            if rating1 == rating2 or abs(rating1 - rating2) < 0.05:
+                continue
+            label = 1 if rating1 > rating2 else -1
+            pairs.append((vec1, vec2, label))
+            pairs.append((vec2, vec1, -label))
 
-    item1, item2 = group.to_dict("records")
-
-    vec1 = item1["Concatnated_image_caption"]
-    vec2 = item2["Concatnated_image_caption"]
-    rating1 = item1["Rating"]
-    rating2 = item2["Rating"]
-
-    if rating1 == rating2 or abs(rating1 - rating2) < 0.05:
-        continue
-
-    label = 1 if rating1 > rating2 else -1
-
-    pairs.append((vec1, vec2, label))
-    pairs.append((vec2, vec1, -label))
 
 X1_raw = [a for a, _, _ in pairs]
 X2_raw = [b for _, b, _ in pairs]
@@ -119,3 +116,26 @@ spearman_corr = spearmanr(pred_scores, Y_test)[0]
 print(f"Pairwise Accuracy on Test Set: {accuracy:.4f}")
 print(f"Pearson Correlation: {pearson_corr:.4f}")
 print(f"Spearman Correlation: {spearman_corr:.4f}")
+
+# Non pairwise evaluation 
+print("\nEvaluating encoder on 9k image caption pairs...")
+
+X_raw_all = np.array(df["Concatnated_image_caption"].tolist())
+y_raw_all = df["Rating"].values
+
+X_scaled_all = scaler.transform(X_raw_all)
+
+X_train_scaled, X_test_scaled, y_train_true, y_test_true = train_test_split(
+    X_scaled_all, y_raw_all, test_size=0.2, random_state=42
+)
+
+# predicting scores using the encoder above
+pred_scores_test = encoder.predict(X_test_scaled).flatten()
+
+# Evaluate
+pearson_test = pearsonr(pred_scores_test, y_test_true)[0]
+spearman_test = spearmanr(pred_scores_test, y_test_true)[0]
+
+print("Non-Pairwise Evaluation on Test set:")
+print(f"Pearson Correlation: {pearson_test:.4f}")
+print(f"Spearman Correlation: {spearman_test:.4f}")
