@@ -5,7 +5,6 @@ from tensorflow.keras.regularizers import l2
 from scipy.stats import pearsonr, spearmanr
 from sklearn.preprocessing import StandardScaler
 
-# 设置随机种子，确保结果可复现
 np.random.seed(42)
 tf.random.set_seed(42)
 
@@ -13,7 +12,8 @@ def create_encoder(input_dim):
     """Creates a feedforward encoder model for pairwise ranking."""
     model = tf.keras.Sequential([
         tf.keras.layers.InputLayer(input_shape=(input_dim,)),
-       
+
+    
 
         tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=l2(1e-5)),
         tf.keras.layers.BatchNormalization(),
@@ -79,7 +79,7 @@ class DualEncoderText(tf.keras.Model):
 
 
 # Load dataset
-file_path = r"C:\Users\29049\Desktop\新建文件夹\VICR_entire.csv"
+file_path = r"C:\Users\29049\Desktop\新建文件夹\VICR_image_duplicates_diff_rating.csv"
 df = pd.read_csv(file_path)
 
 # Convert text embedding column to numpy arrays
@@ -97,7 +97,7 @@ scaler = StandardScaler()
 X = scaler.fit_transform(X)
 
 
-def create_pairwise_data(X, y, max_pairs=80000):
+def create_pairwise_data(X, y, max_pairs=100000):
     """Generate a fixed number of pairwise training pairs efficiently."""
     num_features = X.shape[1]
 
@@ -123,7 +123,7 @@ def create_pairwise_data(X, y, max_pairs=80000):
 # Generate pairwise dataset
 X1, X2, Y = create_pairwise_data(X, y)
 
-# 固定按顺序划分训练集和测试集（前 80% 训练，后 20% 测试）
+
 num_samples = len(X1)
 split_index = int(0.8 * num_samples)
 
@@ -174,3 +174,16 @@ spearman_corr, _ = spearmanr(Y_test, predicted_scores)
 print(f"Pearson Correlation: {pearson_corr:.4f}")
 print(f"Spearman Correlation: {spearman_corr:.4f}")
 
+# === Pairwise Ranking Accuracy ===
+def compute_pairwise_accuracy(model, X1, X2, Y_true):
+    correct = 0
+    total = len(Y_true)
+    for i in range(total):
+        score = model.predict(np.expand_dims(X1[i], axis=0), np.expand_dims(X2[i], axis=0))
+        predicted_label = 1 if score > 0 else -1
+        if predicted_label == Y_true[i]:
+            correct += 1
+    return correct / total
+
+accuracy = compute_pairwise_accuracy(pairwise_model, X1_test, X2_test, Y_test)
+print(f"Pairwise Ranking Accuracy: {accuracy:.4f}")
