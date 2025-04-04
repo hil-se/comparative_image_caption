@@ -16,7 +16,7 @@ os.environ['TF_DETERMINISTIC_OPS'] = '1'
 os.environ['TF_CUDNN_DETERMINISTIC'] = '1'
 
 # 读取数据集
-file_path = r"C:\Users\29049\Desktop\新建文件夹\Final_VICR.csv"
+file_path = r"../data/VICR_entire.csv"
 df = pd.read_csv(file_path)
 
 # 解析文本嵌入向量
@@ -64,50 +64,41 @@ def ranking_penalized_mae(y_true, y_pred):
 
     return mae + 0.3 * rank_penalty  # 增强排名惩罚权重
 
-# 定义模型
-def build_model(input_shape):
+
+def build_model(input_dim):
     model = tf.keras.Sequential([
-        tf.keras.layers.Dense(2048, kernel_regularizer=l2(1e-5), input_shape=input_shape),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
+        tf.keras.layers.InputLayer(input_shape=(input_dim,)),
+
+        tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(1e-5)),
         tf.keras.layers.BatchNormalization(),
         tf.keras.layers.Dropout(0.3),
 
-        tf.keras.layers.Dense(1024, kernel_regularizer=l2(1e-5)),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
-        tf.keras.layers.BatchNormalization(),
-        tf.keras.layers.Dropout(0.3),
-
-        tf.keras.layers.Dense(512, kernel_regularizer=l2(1e-5)),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
+        tf.keras.layers.Dense(256, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(1e-5)),
         tf.keras.layers.BatchNormalization(),
         tf.keras.layers.Dropout(0.2),
 
-        tf.keras.layers.Dense(256, kernel_regularizer=l2(1e-5)),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
-        tf.keras.layers.BatchNormalization(),
-        tf.keras.layers.Dropout(0.2),
-
-        tf.keras.layers.Dense(128, kernel_regularizer=l2(1e-5)),
-        tf.keras.layers.LeakyReLU(alpha=0.1),
+        tf.keras.layers.Dense(128, activation='relu', kernel_regularizer=tf.keras.regularizers.l2(1e-5)),
         tf.keras.layers.BatchNormalization(),
 
         tf.keras.layers.Dense(1, activation=None)
     ])
 
     initial_learning_rate = 0.001
-    lr_schedule = tf.keras.optimizers.schedules.CosineDecay(initial_learning_rate, decay_steps=5000, alpha=0.0001)
+    lr_schedule = tf.keras.optimizers.schedules.CosineDecay(
+        initial_learning_rate, decay_steps=5000, alpha=0.0001
+    )
     optimizer = tf.keras.optimizers.Adam(learning_rate=lr_schedule)
 
     model.compile(
         optimizer=optimizer,
-        loss=ranking_penalized_mae,
+        loss=ranking_penalized_mae,  # Assuming you want the same custom loss
         metrics=['mae']
     )
 
     return model
 
 # 构建和编译模型
-model = build_model((X_train.shape[1],))
+model = build_model((X_train.shape[1]))
 
 # 确保 checkpoint 目录存在
 checkpoint_path = "checkpoint/image_caption.keras"
