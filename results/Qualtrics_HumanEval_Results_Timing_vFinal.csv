@@ -1,0 +1,249 @@
+StartDate,EndDate,Status,IPAddress,Progress,Duration (in seconds),Finished,RecordedDate,ResponseId,RecipientLastName,RecipientFirstName,RecipientEmail,ExternalReference,LocationLatitude,LocationLongitude,DistributionChannel,UserLanguage,Q_RecaptchaScore,Timing 1_1_First Click,Timing 1_1_Last Click,Timing 1_1_Page Submit,Timing 1_1_Click Count,Task 1_01,Timing 1_2_First Click,Timing 1_2_Last Click,Timing 1_2_Page Submit,Timing 1_2_Click Count,Task 1_02,Timing 1_3_First Click,Timing 1_3_Last Click,Timing 1_3_Page Submit,Timing 1_3_Click Count,Task 1_03,Timing 1_4_First Click,Timing 1_4_Last Click,Timing 1_4_Page Submit,Timing 1_4_Click Count,Task 1_04,Timing 1_5_First Click,Timing 1_5_Last Click,Timing 1_5_Page Submit,Timing 1_5_Click Count,Task 1_05,Timing 1_6_First Click,Timing 1_6_Last Click,Timing 1_6_Page Submit,Timing 1_6_Click Count,Task 1_06,Timing 1_7_First Click,Timing 1_7_Last Click,Timing 1_7_Page Submit,Timing 1_7_Click Count,Task 1_07,Timing 1_8_First Click,Timing 1_8_Last Click,Timing 1_8_Page Submit,Timing 1_8_Click Count,Task 1_08,Timing 1_9_First Click,Timing 1_9_Last Click,Timing 1_9_Page Submit,Timing 1_9_Click Count,Task 1_09,Timing 1_10_First Click,Timing 1_10_Last Click,Timing 1_10_Page Submit,Timing 1_10_Click Count,Task 1_10,Timing 2_1_First Click,Timing 2_1_Last Click,Timing 2_1_Page Submit,Timing 2_1_Click Count,Task 2_01,Timing 2_2_First Click,Timing 2_2_Last Click,Timing 2_2_Page Submit,Timing 2_2_Click Count,Task 2_02,Timing 2_3_First Click,Timing 2_3_Last Click,Timing 2_3_Page Submit,Timing 2_3_Click Count,Task 2_03,Timing 2_4_First Click,Timing 2_4_Last Click,Timing 2_4_Page Submit,Timing 2_4_Click Count,Task 2_04,Timing 2_5_First Click,Timing 2_5_Last Click,Timing 2_5_Page Submit,Timing 2_5_Click Count,Task 2_05,Timing 2_6_First Click,Timing 2_6_Last Click,Timing 2_6_Page Submit,Timing 2_6_Click Count,Task 2_06,Timing 2_7_First Click,Timing 2_7_Last Click,Timing 2_7_Page Submit,Timing 2_7_Click Count,Task 2_07,Timing 2_8_First Click,Timing 2_8_Last Click,Timing 2_8_Page Submit,Timing 2_8_Click Count,Task 2_08,Timing 2_9_First Click,Timing 2_9_Last Click,Timing 2_9_Page Submit,Timing 2_9_Click Count,Task 2_09,Timing 2_10_First Click,Timing 2_10_Last Click,Timing 2_10_Page Submit,Timing 2_10_Click Count,Task 2_10,Timing 3_1_First Click,Timing 3_1_Last Click,Timing 3_1_Page Submit,Timing 3_1_Click Count,Task 3_01,Timing 3_2_First Click,Timing 3_2_Last Click,Timing 3_2_Page Submit,Timing 3_2_Click Count,Task 3_02,Timing 3_3_First Click,Timing 3_3_Last Click,Timing 3_3_Page Submit,Timing 3_3_Click Count,Task 3_03,Timing 3_4_First Click,Timing 3_4_Last Click,Timing 3_4_Page Submit,Timing 3_4_Click Count,Task 3_04,Timing 3_5_First Click,Timing 3_5_Last Click,Timing 3_5_Page Submit,Timing 3_5_Click Count,Task 3_05,Timing 3_6_First Click,Timing 3_6_Last Click,Timing 3_6_Page Submit,Timing 3_6_Click Count,Task 3_06,Timing 3_7_First Click,Timing 3_7_Last Click,Timing 3_7_Page Submit,Timing 3_7_Click Count,Task 3_07,Timing 3_8_First Click,Timing 3_8_Last Click,Timing 3_8_Page Submit,Timing 3_8_Click Count,Task 3_08,Timing 3_9_First Click,Timing 3_9_Last Click,Timing 3_9_Page Submit,Timing 3_9_Click Count,Task 3_09,Timing 3_10_First Click,Timing 3_10_Last Click,Timing 3_10_Page Submit,Timing 3_10_Click Count,Task 3_10,Regression_overall_time,Pairwise_overall_time,Caption_Ranking_overall_time
+Start Date,End Date,Response Type,IP Address,Progress,Duration (in seconds),Finished,Recorded Date,Response ID,Recipient Last Name,Recipient First Name,Recipient Email,External Data Reference,Location Latitude,Location Longitude,Distribution Channel,User Language,Q_RecaptchaScore,Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A group of people that are on the beach.
+		
+	
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A woman in a red jacket standing next to a sign.
+		
+	
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A man in a black jacket is walking down a hill.
+		
+	
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A man on a motorcycle going down the street.
+		
+	
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"An apple sitting on top of a laptop.
+		
+	
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A man with some suitcases on the street.
+      
+    
+  
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A large building with a clock tower is lit up at night.
+      
+    
+  
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"People walking down the street in the rain.
+      
+    
+  
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A double oven mounted inside of a yellow wall.
+      
+    
+  
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A group of people standing next to each other.
+		
+	
+
+
+
+
+
+How well does the caption describe the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A table and chairs sit on a grassy walkway, with a pitcher
+      
+       
+      
+        B. Orange construction equipment sitting on the side of the road
+      
+    
+  
+
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A cat laying on the ground next to a person
+      
+       
+      
+        B. A man is riding a bike in the snow.
+      
+    
+  
+
+
+
+  Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A man standing in front of a brick wall.
+      
+       
+      
+        B. A laptop next to two computers, keyboards and some mouses.
+      
+    
+  
+
+
+
+  Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A black and white picture of vehicles and people in the street.
+			 
+			B. A dog is standing in the snow with a large stick.
+		
+	
+
+
+ 
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A large tree with a lot of decorations on it.
+			 
+			B. Two burritos on a plate with a spoon next to a pack of cigarettes.
+		
+	
+
+
+ 
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A bathroom is shown, with a urinal and a bidet.
+			 
+			B. A dog is laying on the grass with a leash.
+		
+	
+
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A car is parked in front of a building
+			 
+			B. A squirrel is standing on a rock with a rope.
+		
+	
+
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A herd of sheep in an open snowy field.
+			 
+			B. A computer screen is displayed with a lot of books.
+		
+	
+
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A bird themed clock sitting inside of a green box.
+			 
+			B. A young man holding a skateboard while wearing head phones.
+		
+	
+
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A man standing next to a cart filled with bananas.
+			 
+			B. This is a toy microwave and toy foods.
+		
+	
+
+
+Which pair has a caption that more accurately describes its image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. Cows walking down a street near a tour bus. 
+			B. A cow walking in front of a red car
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A decorated truck is parked at a curb near a building.
+			B. A truck with graffiti on the side of it
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. Mom gives her daughter a lesson in using her baseball glove.
+			B. A group of young people playing a game of baseball
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. An electric tower in front of buildings on the road.
+      
+      
+        B. A train that is sitting on the side of a road
+      
+    
+  
+
+
+
+  Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A  girl in a purple shirt holding a backpack.
+			B. A girl smiles while holding a baseball glove.
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A close up of a house phone showing only the numbers in focus.
+			B. A remote control sitting on top of a keyboard
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A blue umbrella sitting in the ground next to a fence
+			B. A fire hydrant with a blue jacket on top of it.
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A bathroom with a sink and a mirror.
+			B. A public bathroom with a white sink and sign regarding dirty hands.
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. A trio of dogs sitting in their owner's lap in a red convertible.
+			B. A woman and her dog in the back of a car
+		
+	
+
+
+Which caption best describes the image?",Timing - First Click,Timing - Last Click,Timing - Page Submit,Timing - Click Count,"A. Naan bread, soup, and a drink are served on a cafeteria tray.
+      
+      
+        B. A plate with a sandwich and a cup of soup
+      
+    
+  
+
+
+
+  Which caption best describes the image?",,,
+"{""ImportId"":""startDate"",""timeZone"":""America/Denver""}","{""ImportId"":""endDate"",""timeZone"":""America/Denver""}","{""ImportId"":""status""}","{""ImportId"":""ipAddress""}","{""ImportId"":""progress""}","{""ImportId"":""duration""}","{""ImportId"":""finished""}","{""ImportId"":""recordedDate"",""timeZone"":""America/Denver""}","{""ImportId"":""_recordId""}","{""ImportId"":""recipientLastName""}","{""ImportId"":""recipientFirstName""}","{""ImportId"":""recipientEmail""}","{""ImportId"":""externalDataReference""}","{""ImportId"":""locationLatitude""}","{""ImportId"":""locationLongitude""}","{""ImportId"":""distributionChannel""}","{""ImportId"":""userLanguage""}","{""ImportId"":""Q_RecaptchaScore""}","{""ImportId"":""QID3_FIRST_CLICK""}","{""ImportId"":""QID3_LAST_CLICK""}","{""ImportId"":""QID3_PAGE_SUBMIT""}","{""ImportId"":""QID3_CLICK_COUNT""}","{""ImportId"":""QID5""}","{""ImportId"":""QID45_FIRST_CLICK""}","{""ImportId"":""QID45_LAST_CLICK""}","{""ImportId"":""QID45_PAGE_SUBMIT""}","{""ImportId"":""QID45_CLICK_COUNT""}","{""ImportId"":""QID7""}","{""ImportId"":""QID48_FIRST_CLICK""}","{""ImportId"":""QID48_LAST_CLICK""}","{""ImportId"":""QID48_PAGE_SUBMIT""}","{""ImportId"":""QID48_CLICK_COUNT""}","{""ImportId"":""QID8""}","{""ImportId"":""QID47_FIRST_CLICK""}","{""ImportId"":""QID47_LAST_CLICK""}","{""ImportId"":""QID47_PAGE_SUBMIT""}","{""ImportId"":""QID47_CLICK_COUNT""}","{""ImportId"":""QID9""}","{""ImportId"":""QID44_FIRST_CLICK""}","{""ImportId"":""QID44_LAST_CLICK""}","{""ImportId"":""QID44_PAGE_SUBMIT""}","{""ImportId"":""QID44_CLICK_COUNT""}","{""ImportId"":""QID10""}","{""ImportId"":""QID42_FIRST_CLICK""}","{""ImportId"":""QID42_LAST_CLICK""}","{""ImportId"":""QID42_PAGE_SUBMIT""}","{""ImportId"":""QID42_CLICK_COUNT""}","{""ImportId"":""QID11""}","{""ImportId"":""QID43_FIRST_CLICK""}","{""ImportId"":""QID43_LAST_CLICK""}","{""ImportId"":""QID43_PAGE_SUBMIT""}","{""ImportId"":""QID43_CLICK_COUNT""}","{""ImportId"":""QID12""}","{""ImportId"":""QID46_FIRST_CLICK""}","{""ImportId"":""QID46_LAST_CLICK""}","{""ImportId"":""QID46_PAGE_SUBMIT""}","{""ImportId"":""QID46_CLICK_COUNT""}","{""ImportId"":""QID15""}","{""ImportId"":""QID41_FIRST_CLICK""}","{""ImportId"":""QID41_LAST_CLICK""}","{""ImportId"":""QID41_PAGE_SUBMIT""}","{""ImportId"":""QID41_CLICK_COUNT""}","{""ImportId"":""QID16""}","{""ImportId"":""QID40_FIRST_CLICK""}","{""ImportId"":""QID40_LAST_CLICK""}","{""ImportId"":""QID40_PAGE_SUBMIT""}","{""ImportId"":""QID40_CLICK_COUNT""}","{""ImportId"":""QID17""}","{""ImportId"":""QID39_FIRST_CLICK""}","{""ImportId"":""QID39_LAST_CLICK""}","{""ImportId"":""QID39_PAGE_SUBMIT""}","{""ImportId"":""QID39_CLICK_COUNT""}","{""ImportId"":""QID13""}","{""ImportId"":""QID59_FIRST_CLICK""}","{""ImportId"":""QID59_LAST_CLICK""}","{""ImportId"":""QID59_PAGE_SUBMIT""}","{""ImportId"":""QID59_CLICK_COUNT""}","{""ImportId"":""QID18""}","{""ImportId"":""QID56_FIRST_CLICK""}","{""ImportId"":""QID56_LAST_CLICK""}","{""ImportId"":""QID56_PAGE_SUBMIT""}","{""ImportId"":""QID56_CLICK_COUNT""}","{""ImportId"":""QID19""}","{""ImportId"":""QID58_FIRST_CLICK""}","{""ImportId"":""QID58_LAST_CLICK""}","{""ImportId"":""QID58_PAGE_SUBMIT""}","{""ImportId"":""QID58_CLICK_COUNT""}","{""ImportId"":""QID20""}","{""ImportId"":""QID55_FIRST_CLICK""}","{""ImportId"":""QID55_LAST_CLICK""}","{""ImportId"":""QID55_PAGE_SUBMIT""}","{""ImportId"":""QID55_CLICK_COUNT""}","{""ImportId"":""QID21""}","{""ImportId"":""QID54_FIRST_CLICK""}","{""ImportId"":""QID54_LAST_CLICK""}","{""ImportId"":""QID54_PAGE_SUBMIT""}","{""ImportId"":""QID54_CLICK_COUNT""}","{""ImportId"":""QID22""}","{""ImportId"":""QID53_FIRST_CLICK""}","{""ImportId"":""QID53_LAST_CLICK""}","{""ImportId"":""QID53_PAGE_SUBMIT""}","{""ImportId"":""QID53_CLICK_COUNT""}","{""ImportId"":""QID23""}","{""ImportId"":""QID52_FIRST_CLICK""}","{""ImportId"":""QID52_LAST_CLICK""}","{""ImportId"":""QID52_PAGE_SUBMIT""}","{""ImportId"":""QID52_CLICK_COUNT""}","{""ImportId"":""QID34""}","{""ImportId"":""QID57_FIRST_CLICK""}","{""ImportId"":""QID57_LAST_CLICK""}","{""ImportId"":""QID57_PAGE_SUBMIT""}","{""ImportId"":""QID57_CLICK_COUNT""}","{""ImportId"":""QID35""}","{""ImportId"":""QID51_FIRST_CLICK""}","{""ImportId"":""QID51_LAST_CLICK""}","{""ImportId"":""QID51_PAGE_SUBMIT""}","{""ImportId"":""QID51_CLICK_COUNT""}","{""ImportId"":""QID36""}","{""ImportId"":""QID33_FIRST_CLICK""}","{""ImportId"":""QID33_LAST_CLICK""}","{""ImportId"":""QID33_PAGE_SUBMIT""}","{""ImportId"":""QID33_CLICK_COUNT""}","{""ImportId"":""QID24""}","{""ImportId"":""QID69_FIRST_CLICK""}","{""ImportId"":""QID69_LAST_CLICK""}","{""ImportId"":""QID69_PAGE_SUBMIT""}","{""ImportId"":""QID69_CLICK_COUNT""}","{""ImportId"":""QID25""}","{""ImportId"":""QID66_FIRST_CLICK""}","{""ImportId"":""QID66_LAST_CLICK""}","{""ImportId"":""QID66_PAGE_SUBMIT""}","{""ImportId"":""QID66_CLICK_COUNT""}","{""ImportId"":""QID26""}","{""ImportId"":""QID65_FIRST_CLICK""}","{""ImportId"":""QID65_LAST_CLICK""}","{""ImportId"":""QID65_PAGE_SUBMIT""}","{""ImportId"":""QID65_CLICK_COUNT""}","{""ImportId"":""QID27""}","{""ImportId"":""QID64_FIRST_CLICK""}","{""ImportId"":""QID64_LAST_CLICK""}","{""ImportId"":""QID64_PAGE_SUBMIT""}","{""ImportId"":""QID64_CLICK_COUNT""}","{""ImportId"":""QID28""}","{""ImportId"":""QID62_FIRST_CLICK""}","{""ImportId"":""QID62_LAST_CLICK""}","{""ImportId"":""QID62_PAGE_SUBMIT""}","{""ImportId"":""QID62_CLICK_COUNT""}","{""ImportId"":""QID29""}","{""ImportId"":""QID61_FIRST_CLICK""}","{""ImportId"":""QID61_LAST_CLICK""}","{""ImportId"":""QID61_PAGE_SUBMIT""}","{""ImportId"":""QID61_CLICK_COUNT""}","{""ImportId"":""QID30""}","{""ImportId"":""QID67_FIRST_CLICK""}","{""ImportId"":""QID67_LAST_CLICK""}","{""ImportId"":""QID67_PAGE_SUBMIT""}","{""ImportId"":""QID67_CLICK_COUNT""}","{""ImportId"":""QID31""}","{""ImportId"":""QID63_FIRST_CLICK""}","{""ImportId"":""QID63_LAST_CLICK""}","{""ImportId"":""QID63_PAGE_SUBMIT""}","{""ImportId"":""QID63_CLICK_COUNT""}","{""ImportId"":""QID37""}","{""ImportId"":""QID68_FIRST_CLICK""}","{""ImportId"":""QID68_LAST_CLICK""}","{""ImportId"":""QID68_PAGE_SUBMIT""}","{""ImportId"":""QID68_CLICK_COUNT""}","{""ImportId"":""QID38""}",,,
+06-10-2025 16:06,06-10-2025 16:10,IP Address,98.10.242.17,100,234,TRUE,06-10-2025 16:10,R_3q9BkfNKhewiMaj,,,,,43.0801,-77.6342,anonymous,EN,1,5.442,6.942,6.948,2,3 - Moderately accurate,3.049,4.344,4.348,2,1 - Not accurate at all,6.618,8.497,8.511,2,2 - Slightly accurate,5.921,8.641,8.646,2,5 - Completely accurate,5.207,7.302,7.307,2,3 - Moderately accurate,5.368,7.525,7.529,2,2 - Slightly accurate,7.974,11.065,11.07,2,1 - Not accurate at all,3.123,5.553,5.568,3,3 - Moderately accurate,2.211,3.213,3.218,2,1 - Not accurate at all,2.455,4.316,4.326,2,5 - Completely accurate,2.736,3.92,3.926,2,B,3.774,4.976,4.978,2,A,3.915,5.548,5.552,2,A,5.611,7.967,7.97,3,A,7.12,9.233,9.237,2,B,3.783,4.85,4.854,2,B,9.122,10.265,10.27,2,A,4.012,5.236,5.244,2,A,3.611,4.981,4.985,2,A,4.736,6.085,6.089,2,A,3.014,4.73,4.734,3,A,5.039,7.096,7.101,2,B,3.396,4.75,4.754,2,A,4.903,6.914,6.918,2,A,4.083,5.315,5.325,2,B,5.189,7.231,7.237,2,A,4.486,5.687,5.692,2,B,3.963,5.464,5.478,2,B,3.447,4.851,4.856,2,A,3.051,4.961,4.974,2,A,67.471,63.103,57.069
+07-10-2025 01:17,07-10-2025 01:21,IP Address,73.193.54.95,100,267,TRUE,07-10-2025 01:21,R_1kocnHFQN4TnrHr,,,,,47.8581,-122.0872,anonymous,EN,1,5.657,12.939,12.948,3,3 - Moderately accurate,4.105,5.661,5.669,2,1 - Not accurate at all,8.294,13.19,13.196,2,2 - Slightly accurate,13.648,14.757,14.76,2,5 - Completely accurate,9.418,14.545,14.548,2,3 - Moderately accurate,4.235,18.29,18.298,5,1 - Not accurate at all,2.343,3.264,3.273,2,1 - Not accurate at all,5.524,8.486,8.493,2,2 - Slightly accurate,2.433,3.28,3.282,2,1 - Not accurate at all,2.248,4.571,4.58,2,5 - Completely accurate,4.933,5.997,6.002,2,B,6.885,8.211,8.218,2,A,5.249,6.193,6.198,2,A,3.92,5.141,5.149,2,A,5.488,6.363,6.373,2,B,5.764,7.338,7.349,2,B,5.345,7.955,7.961,2,A,5.661,6.449,6.459,2,A,6.429,7.462,7.47,2,A,3.691,4.414,4.415,2,A,6.201,7.543,7.552,2,A,9.209,11.032,11.04,2,A,6.771,8.483,8.492,2,A,5.411,9.677,9.682,2,A,4.967,5.918,5.925,2,B,5.798,7.162,7.167,2,A,3.894,4.636,4.647,2,B,11.325,13.319,13.325,2,B,5.442,6.499,6.51,2,A,4.383,5.283,5.291,2,A,99.047,65.587,79.631
+07-10-2025 06:50,07-10-2025 06:56,IP Address,98.10.40.40,100,333,TRUE,07-10-2025 06:56,R_5G3bXHDvNTKNT6j,,,,,43.0801,-77.6342,anonymous,EN,1,9.683,12.047,12.054,2,4 - Mostly accurate,9.607,10.607,10.615,2,1 - Not accurate at all,6.332,7.249,7.258,2,1 - Not accurate at all,4.902,6.399,6.406,2,3 - Moderately accurate,7.767,11.381,11.386,2,2 - Slightly accurate,5.643,6.193,6.199,2,2 - Slightly accurate,7.873,8.357,8.364,2,2 - Slightly accurate,6.833,7.367,7.374,2,3 - Moderately accurate,5.267,5.917,6.275,2,1 - Not accurate at all,3.207,6.221,6.227,2,4 - Mostly accurate,11.458,11.991,11.998,2,B,8.602,9.086,9.092,2,A,11.8,12.267,12.273,2,A,7.255,7.672,7.677,2,A,5.536,5.971,5.978,2,B,8.69,9.223,9.23,2,A,7.29,8.54,8.546,2,A,7.244,7.727,7.734,2,A,5.487,5.953,5.96,2,A,8.32,8.754,8.761,2,A,7.909,8.676,8.682,2,A,12.628,13.528,13.535,2,A,8.345,9.062,9.069,2,A,2.631,4.082,4.088,3,A,8.85,9.298,9.306,2,B,13.964,14.381,14.386,2,A,8.337,10.255,10.262,2,B,15.483,17.218,17.225,2,B,7.92,8.737,8.744,2,A,9.293,9.793,9.802,2,A,82.158,87.243,105.099
+07-10-2025 07:50,07-10-2025 07:55,IP Address,38.49.92.69,100,306,TRUE,07-10-2025 07:55,R_7LOKKEJ6eoOBv2y,,,,,43.1311,-77.6053,anonymous,EN,1,4.938,8.671,8.676,2,1 - Not accurate at all,3.866,6.023,6.029,2,1 - Not accurate at all,3.773,4.79,4.792,2,5 - Completely accurate,5.64,7.264,7.27,2,5 - Completely accurate,6.796,8.18,8.181,2,2 - Slightly accurate,8.931,10.878,10.879,3,1 - Not accurate at all,10.32,11.623,11.624,2,1 - Not accurate at all,2.711,6.946,6.947,4,3 - Moderately accurate,6.32,10.358,10.363,2,1 - Not accurate at all,3.155,4.338,4.343,2,5 - Completely accurate,12.487,13.55,13.555,2,B,31.114,32.706,32.707,2,A,8.618,9.691,9.697,2,A,6.372,7.389,7.393,2,A,9.891,10.949,10.95,2,B,6.997,8.035,8.04,2,B,12.253,14.492,14.493,3,A,9.501,10.417,10.418,2,A,7.066,9.793,9.794,2,A,3.23,4.971,4.977,2,A,11.544,12.54,12.541,2,A,7.616,8.634,8.635,2,A,7.58,8.939,8.944,2,A,6.63,8.851,8.852,3,A,6.034,7.269,7.27,2,B,7.242,10.251,10.252,3,A,2.857,4.207,4.211,2,B,9.172,11.98,11.991,3,A,5.718,7.494,7.495,3,A,4.097,5.059,5.065,2,A,79.104,122.023,85.256
+08-10-2025 10:18,08-10-2025 10:23,IP Address,168.92.252.22,100,290,TRUE,08-10-2025 10:23,R_6jZXPEJ67cLFD06,,,,,43.0801,-77.6342,anonymous,EN,0.899999976,7.379,10.933,10.952,2,2 - Slightly accurate,5.023,7.164,7.182,2,1 - Not accurate at all,3.644,5.276,5.293,2,1 - Not accurate at all,3.36,9.162,9.181,2,5 - Completely accurate,6.174,8.16,8.18,3,2 - Slightly accurate,12.543,14.048,14.064,2,1 - Not accurate at all,4.456,7.894,7.913,3,2 - Slightly accurate,4.002,5.944,5.959,3,2 - Slightly accurate,2.82,5.175,5.193,3,1 - Not accurate at all,3.173,4.611,4.63,2,5 - Completely accurate,9.68,10.935,10.952,2,B,5.056,6.301,6.317,2,A,3.801,5.107,5.126,2,A,3.665,4.941,4.957,2,A,5.834,7.28,7.295,2,B,7.633,10.237,10.254,2,B,4.502,9.819,9.836,2,A,3.995,5.501,5.518,2,A,4.174,5.434,5.45,2,A,3.741,5.579,5.597,2,A,4.929,8.673,8.69,2,A,10.017,11.301,11.317,2,A,3.588,5.327,5.342,2,A,3.564,13.496,13.511,3,B,3.409,4.513,4.527,2,B,4.19,15.77,15.787,4,A,4.525,5.665,5.682,2,B,5.652,6.902,6.919,2,B,4.568,5.942,5.958,2,A,4.493,11.46,11.478,4,A,78.547,71.286,89.211
+10-10-2025 15:08,10-10-2025 15:14,IP Address,98.10.244.156,100,405,TRUE,10-10-2025 15:14,R_1GHyBhSPhKkoufG,,,,,43.0801,-77.6342,anonymous,EN,0.899999976,15.857,17.061,17.068,2,2 - Slightly accurate,14.97,16.937,16.946,2,1 - Not accurate at all,28.04,28.904,28.909,2,2 - Slightly accurate,3.782,7.654,7.659,3,4 - Mostly accurate,7.492,8.388,8.395,2,3 - Moderately accurate,10.499,12.567,12.577,2,2 - Slightly accurate,12.104,18.568,18.577,3,1 - Not accurate at all,6.811,8.411,8.417,2,1 - Not accurate at all,7.097,8.009,8.013,2,1 - Not accurate at all,11.96,13.511,13.518,2,5 - Completely accurate,19.277,20.065,20.072,2,B,13.008,15.452,15.458,2,A,7.525,10.229,10.234,2,A,6.705,8.225,8.237,2,A,15.371,24.423,24.43,2,B,9.302,10.362,10.369,2,B,11.06,11.976,11.985,2,A,8.23,9.429,9.437,2,A,6.013,6.752,6.761,2,A,8.857,9.912,9.917,2,A,5.365,6.213,6.216,2,A,10.241,12.34,12.351,2,A,9.745,11.669,11.677,2,A,10.272,11.347,11.354,2,A,5.54,6.292,6.294,2,B,13.169,14.112,14.122,2,B,3.537,4.772,4.783,2,B,16.064,16.924,16.931,2,B,5.777,7.641,7.648,2,A,6.879,7.919,7.93,2,A,140.079,126.894,99.306
+10-10-2025 15:08,10-10-2025 15:17,IP Address,98.10.244.156,100,519,TRUE,10-10-2025 15:17,R_3QEouZKrgAdPY2w,,,,,43.0801,-77.6342,anonymous,EN,0.899999976,7.424,9.915,9.919,2,1 - Not accurate at all,9.531,34.478,34.488,7,1 - Not accurate at all,5.413,6.87,6.873,2,1 - Not accurate at all,16.068,16.845,16.856,2,2 - Slightly accurate,10.91,56.118,56.122,6,3 - Moderately accurate,14.298,15.124,15.134,2,5 - Completely accurate,4.755,5.319,5.33,2,1 - Not accurate at all,5.418,6.866,6.874,2,1 - Not accurate at all,7.941,10.357,10.369,2,1 - Not accurate at all,9.326,19.037,19.043,6,5 - Completely accurate,19.227,19.814,19.82,2,B,8.431,9.126,9.129,2,A,7.285,7.887,7.893,2,A,7.729,13.196,13.201,4,A,11.514,12.178,12.188,2,B,13.258,14.086,14.089,2,B,14.136,15.464,15.471,2,A,6.041,6.591,6.599,2,A,25.621,26.259,26.262,2,A,9.5,12.542,12.549,2,A,6.245,15.568,15.573,7,A,6.496,7.347,7.357,2,A,7.039,8.015,8.018,2,A,14.913,29.24,29.249,4,A,8.466,9.197,9.2,2,B,6.717,24.169,24.177,4,A,4.629,5.194,5.199,2,B,10.266,10.882,10.891,2,B,6.373,7.128,7.135,2,A,6.763,7.424,7.426,2,A,181.008,137.198,124.225
+14-10-2025 17:44,14-10-2025 17:50,IP Address,73.193.54.95,100,395,TRUE,14-10-2025 17:50,R_50O9Lvwzr3r6hCC,,,,,47.8581,-122.0872,anonymous,EN,0.899999976,7.408,9.877,9.891,2,1 - Not accurate at all,9.664,12.027,12.038,3,1 - Not accurate at all,5.623,6.538,6.552,2,1 - Not accurate at all,6.004,7.029,7.047,2,5 - Completely accurate,5.325,8.216,8.223,2,1 - Not accurate at all,8.373,10.494,10.511,2,5 - Completely accurate,5.76,9.803,9.81,2,1 - Not accurate at all,4.252,7.859,7.865,2,1 - Not accurate at all,5.231,6.853,6.86,2,1 - Not accurate at all,6.133,7.693,7.712,2,5 - Completely accurate,25.88,28.194,28.21,2,B,8.196,11.288,11.294,2,A,9.853,12.184,12.19,2,A,3.777,5.325,5.331,2,A,4.155,5.213,5.219,2,B,2.621,3.525,3.53,2,B,3.435,5.597,5.612,2,A,2.265,3.991,4.01,2,A,2.364,7.325,7.332,3,A,5.724,12.881,12.899,3,A,5.127,6.858,6.864,2,A,9.561,10.595,10.614,2,A,7.223,9.645,9.652,2,A,6.349,7.512,7.517,2,A,5.379,6.146,6.16,2,B,31.528,40.234,40.246,3,A,5.462,6.471,6.483,2,B,8.588,20.732,20.751,3,B,3.455,8.794,8.808,2,A,4.137,5.434,5.44,2,A,86.509,95.621,122.535
+,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,Average,101.740375,96.119375,95.2915
