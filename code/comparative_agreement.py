@@ -16,7 +16,7 @@ def generate_pairs(x1, x2):
                 d1 = -1
             if x2[i]>x2[j]:
                 d2 = 1
-            elif x1[i]<x1[j]:
+            elif x2[i]<x2[j]:
                 d2 = -1
             if d1!=0 and d2!=0:
                 pairs["A"].append(d1)
