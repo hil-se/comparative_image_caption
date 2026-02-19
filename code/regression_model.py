@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from tensorflow.keras.regularizers import l2
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
-from scipy.stats import pearsonr, spearmanr
+from scipy.stats import pearsonr, spearmanr, kendalltau
 
 # 设定随机种子，确保可复现性
 np.random.seed(42)
@@ -16,7 +16,7 @@ os.environ['TF_DETERMINISTIC_OPS'] = '1'
 os.environ['TF_CUDNN_DETERMINISTIC'] = '1'
 
 # 读取数据集
-file_path = r"C:\Users\29049\Desktop\新建文件夹\VICR_entire.csv"
+file_path =  r"../data/VICR_entire.csv"
 df = pd.read_csv(file_path)
 
 # 解析文本嵌入向量
@@ -133,12 +133,18 @@ mse = mean_squared_error(y_test, y_pred)
 mae = mean_absolute_error(y_test, y_pred)
 pearson_corr, _ = pearsonr(y_test.flatten(), y_pred.flatten())
 spearman_corr, _ = spearmanr(y_test.flatten(), y_pred.flatten())
+kendall_corr, _ = kendalltau(y_test.flatten(), y_pred.flatten())
+kendall_corr_c, _ = kendalltau(y_test.flatten(), y_pred.flatten(), variant='c')
+
 
 # 输出结果
 print(f"Mean Squared Error (MSE): {mse:.4f}")
 print(f"Mean Absolute Error (MAE): {mae:.4f}")
 print(f"Pearson Correlation: {pearson_corr:.4f}")
 print(f"Spearman Correlation: {spearman_corr:.4f}")
+print(f"Kendall's Tau: {kendall_corr:.4f}")
+print(f"Kendall's Tau c: {kendall_corr_c:.4f}")
+
 
 # 绘制训练 & 验证损失曲线
 plt.figure(figsize=(10, 5))
