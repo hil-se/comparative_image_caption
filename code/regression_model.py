@@ -21,9 +21,10 @@ df = pd.read_csv(file_path)
 
 # 解析文本嵌入向量
 df["Concatnated_image_caption"] = df["Concatnated_image_caption"].apply(lambda x: np.array(eval(x)))
-
+df["Rating"] = df["Rating"].apply(lambda x: float(x))
 # 归一化评分
-df["Rating"] = (df["Rating"] - df["Rating"].min()) / (df["Rating"].max() - df["Rating"].min())
+# df["Rating"] = (df["Rating"] - df["Rating"].min()) / (df["Rating"].max() - df["Rating"].min())
+
 
 # 提取特征和目标值
 X = np.vstack(df["Concatnated_image_caption"].values)
@@ -37,11 +38,9 @@ def generate_ranking_features(X):
     max_features = np.max(X, axis=1, keepdims=True)
     return np.hstack([X, mean_features, std_features, min_features, max_features])
 
-X = generate_ranking_features(X)
+# X = generate_ranking_features(X)
 
-# 归一化特征
-scaler = StandardScaler()
-X = scaler.fit_transform(X)
+
 
 # **固定划分训练集和测试集（前 80% 训练，后 20% 测试）**
 num_samples = len(X)
@@ -50,8 +49,14 @@ split_index = int(0.8 * num_samples)
 X_train, X_test = X[:split_index], X[split_index:]
 y_train, y_test = y[:split_index], y[split_index:]
 
+# 归一化特征
+scaler = StandardScaler()
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
+
+
 # 标签平滑处理（防止过拟合）
-y_train = y_train * 0.9 + 0.05
+# y_train = y_train * 0.9 + 0.05
 
 # 自定义损失函数：排名惩罚的 MAE
 def ranking_penalized_mae(y_true, y_pred):
@@ -103,18 +108,18 @@ def build_model(input_dim):
 model = build_model((X_train.shape[1]))
 
 # 确保 checkpoint 目录存在
-checkpoint_path = "checkpoint/image_caption.keras"
+checkpoint_path = "checkpoint/image_caption.h5"
 os.makedirs(os.path.dirname(checkpoint_path), exist_ok=True)
 
 # 定义回调函数
 reduce_lr = tf.keras.callbacks.ReduceLROnPlateau(monitor='val_loss', patience=8, factor=0.3, min_lr=1e-6, verbose=1)
-checkpoint = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path, monitor="val_loss", save_best_only=True, verbose=1)
+checkpoint = tf.keras.callbacks.ModelCheckpoint(filepath=checkpoint_path, monitor="val_loss", save_best_only=True)
 early_stopping = tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=15, verbose=1, restore_best_weights=True)
 
 # 训练模型
 history = model.fit(
     X_train, y_train,
-    validation_data=(X_test, y_test),
+    validation_split=0.2,
     batch_size=32,
     epochs=500,
     callbacks=[reduce_lr, checkpoint, early_stopping],
