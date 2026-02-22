@@ -74,7 +74,6 @@ def build_model(input_dim):
     model = tf.keras.Sequential([
         tf.keras.layers.InputLayer(input_shape=(input_dim,)),
 
-        
 
         tf.keras.layers.Dense(512, activation='relu', kernel_regularizer=l2(1e-5)),
         tf.keras.layers.BatchNormalization(),
@@ -120,8 +119,8 @@ early_stopping = tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=1
 history = model.fit(
     X_train, y_train,
     validation_split=0.2,
-    batch_size=32,
-    epochs=500,
+    batch_size=256,
+    epochs=4000,
     callbacks=[reduce_lr, checkpoint, early_stopping],
     verbose=1
 )
@@ -151,12 +150,12 @@ print(f"Kendall's Tau: {kendall_corr:.4f}")
 print(f"Kendall's Tau c: {kendall_corr_c:.4f}")
 
 
-# 绘制训练 & 验证损失曲线
-plt.figure(figsize=(10, 5))
-plt.plot(history.history['loss'], label='Train Loss')
-plt.plot(history.history['val_loss'], label='Validation Loss')
-plt.xlabel('Epochs')
-plt.ylabel('Loss')
-plt.legend()
-plt.title('Training vs Validation Loss')
-plt.show()
+# # 绘制训练 & 验证损失曲线
+# plt.figure(figsize=(10, 5))
+# plt.plot(history.history['loss'], label='Train Loss')
+# plt.plot(history.history['val_loss'], label='Validation Loss')
+# plt.xlabel('Epochs')
+# plt.ylabel('Loss')
+# plt.legend()
+# plt.title('Training vs Validation Loss')
+# plt.show()
