@@ -74,7 +74,35 @@ comparative_image_caption/
 4. `compare_same_image.py` -- same-image caption preference (RQ2)
 
 ---
+## Reproducing Results
 
+### Step 1: Generate Embeddings (required for all RQs)
+```bash
+python src/embeddings_serialize.py
+```
+
+Generates and serializes ViLBERT multimodal embeddings for all image-caption pairs. Output is saved to `src/embeddings/`.
+
+### RQ1: Regression vs. Comparative Learning
+```bash
+python src/regression.py
+python src/compare.py
+```
+
+Results (Pearson rho, Spearman r_s, Kendall tau_c) are saved to `results/baseline.csv` and `results/compare.csv`.
+
+### RQ2: Same-Image Caption Preference
+```bash
+python src/compare_same_image.py
+```
+
+Evaluates which caption better describes a given image. Results are saved to `results/compare_same_image.csv`.
+
+### RQ3: Human Evaluation
+
+Human annotation data collected via Qualtrics. Raw results are available in `results/Qualtrics_HumanEval_Results_Timing_vFinal.csv` and `results/image-caption_GT_VS_Human_Rating.xlsx`.
+
+---
 ## Results
 
 ### RQ1: Regression vs. Comparative Learning
