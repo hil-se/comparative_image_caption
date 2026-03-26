@@ -8,27 +8,15 @@ Instead of training directly on numeric human ratings, the comparative model lea
 
 ---
 
-## Method Summary
+## Method
 
-Each image-caption pair is represented using multimodal embeddings:
+Each image-caption pair is encoded using a pretrained **ViLBERT** model, producing an image embedding and a caption embedding that are concatenated into a unified multimodal vector. Two models are trained on this representation:
 
-- Image encoder: ResNet-50 (2048 dimensions)
-- Caption encoder: all-MiniLM-L6-v2 (384 dimensions)
-- Concatenated representation: 2432 dimensions
-
-Two learning paradigms are implemented:
-
-### 1. Regression Model
-- Trained on normalized human ratings
-- Optimized with ranking-penalized MAE
-- Evaluated using MSE, MAE, Pearson ρ, and Spearman rs
-
-### 2. Comparative Learning Model
-- Trained on pairwise preference judgments
-- Uses hinge loss on score differences
-- Learns relative utility ordering instead of absolute scores
+- **Regression:** MSE loss on normalized human ratings
+- **Comparative:** Hinge loss on pairwise preference labels `O_ij in {+1, -1}`
 
 ---
+
 
 ## Architecture
 
@@ -61,90 +49,59 @@ Sample data is included in the `data/` directory.
 
 ## Repository Structure
 ```text
-
 comparative_image_caption/
-│
-├── code/
-│ ├── generate_embedding.py
-│ ├── regression_model.py
-│ ├── pairwise_model.py
-│ ├── caption_ranking.py
-│ ├── comparative_acc.py
-│ ├── comparative_interrater_agreement.py
-│ ├── task1_agreement_metrics.py
-│ ├── compute_averages.py
-│ └── checkpoint/
-│
-├── data/
-│
-├── docs/
-│ ├── regression_framework.png
-│ └── comparative_framework.png
-|
-|── results/
-│
+├── src/
+│   ├── embeddings/
+│   ├── compare.py
+│   ├── compare_same_image.py
+│   ├── embeddings_serialize.py
+│   └── regression.py
+├── results/
+│   ├── human_subject/
+│   ├── image-caption_GT_VS_Human_Rating.xlsx
+│   ├── Qualtrics_HumanEval_Results_Timing_vFinal.csv
+│   ├── baseline.csv
+│   ├── compare.csv
+│   ├── compare_same_image.csv
 └── README.md
 ```
----
 
 ### Execution Order
 
-1. `generate_embedding.py`  
-   Generates multimodal embeddings using ResNet-50 and MiniLM.
-
-2. `regression_model.py`  
-   Trains and evaluates the regression baseline.
-
-3. `pairwise_model.py`  
-   Trains the comparative learning model using hinge loss.
-   
-5. `caption_ranking.py`  
-   Evaluates same-image caption preference modeling.
-
-6. `comparative_acc.py`  
-   Computes correlation metrics and observed agreement.
-
-7. Human agreement analysis:
-   - `task1_agreement_metrics.py`
-   - `comparative_interrater_agreement.py`
-   - `compute_averages.py`
-
-## Results
-
-### Regression Baseline
-
-- MSE = 0.0447  
-- MAE = 0.1593  
-- Pearson ρ = 0.7609  
-- Spearman rs = 0.7089  
-
-### Comparative Learning (N = 20)
-
-- Pearson ρ = 0.6758  
-- Spearman rs = 0.6914  
-
-### Same-Image Caption Comparison
-
-- Observed agreement (po) = 0.8625  
-- Pearson ρ = 0.7074  
-- Spearman rs = 0.7367  
-
-Comparative learning approaches regression performance while relying only on relative preference supervision.
+1. `embeddings_serialize.py` -- generate and serialize multimodal embeddings
+2. `regression.py` -- train/evaluate regression baseline
+3. `compare.py` -- train comparative model with hinge loss (RQ1)
+4. `compare_same_image.py` -- same-image caption preference (RQ2)
 
 ---
 
-### Human Evaluation
+## Results
 
-Eight annotators completed direct rating and comparative tasks.
+### RQ1: Regression vs. Comparative Learning
 
-Inter-rater agreement (between raters):
+| Model | rho | r_s | tau_c |
+|-------|-----|-----|-------|
+| Narins et al. (2024) | -- | -- | 0.758 +/- 0.03 |
+| Regression (ours) | 0.908 +/- 0.001 | 0.887 +/- 0.001 | 0.811 +/- 0.001 |
+| Comparative (ours) | 0.874 +/- 0.008 | 0.880 +/- 0.002 | 0.800 +/- 0.002 |
 
-| Task | po | κ |
-|------|----|----|
+### RQ2: Same-Image Caption Comparison (Accuracy)
+
+| Model | Accuracy |
+|-------|----------|
+| Regression | 0.857 +/- 0.004 |
+| Comparative | 0.846 +/- 0.009 |
+| Same Image | 0.848 +/- 0.004 |
+
+### RQ3: Human Inter-Rater Agreement
+
+| Task | p_o | kappa |
+|------|-----|-------|
 | Direct Rating | 0.85 | 0.69 |
-| Pairwise (Different Images) | 0.95 | 0.85 |
+| Pairwise (different images) | 0.95 | 0.85 |
 | Same-Image Comparison | 0.90 | 0.78 |
 
-Comparative judgments consistently demonstrate higher inter-rater reliability than direct numeric ratings.
+---
 
 
+*Supported by NSF Grant No. 2245796.*
