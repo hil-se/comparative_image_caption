@@ -50,12 +50,19 @@ Sample data is included in the `data/` directory.
 ## Repository Structure
 ```text
 comparative_image_caption/
-├── src/
+├── src/                          # RQ1 and RQ2
 │   ├── embeddings/
-│   ├── compare.py
-│   ├── compare_same_image.py
 │   ├── embeddings_serialize.py
-│   └── regression.py
+│   ├── regression.py
+│   ├── compare.py
+│   └── compare_same_image.py
+├── code/                         # RQ3 human evaluation analysis
+│   ├── checkpoint/
+│   ├── comparative_acc.py
+│   ├── comparative_agreement.py
+│   ├── comparative_interrater_agreement.py
+│   ├── compute_averages.py
+│   └── task1_agreement_metrics.py
 ├── results/
 │   ├── human_subject/
 │   ├── image-caption_GT_VS_Human_Rating.xlsx
@@ -100,8 +107,13 @@ Evaluates which caption better describes a given image. Results are saved to `re
 
 ### RQ3: Human Evaluation
 
-Human annotation data collected via Qualtrics. Raw results are available in `results/Qualtrics_HumanEval_Results_Timing_vFinal.csv` and `results/image-caption_GT_VS_Human_Rating.xlsx`.
 
+Raw annotation data from Qualtrics is in `results/Qualtrics_HumanEval_Results_Timing_vFinal.csv` and `results/image-caption_GT_VS_Human_Rating.xlsx`. To compute agreement metrics:
+```bash
+python code/task1_agreement_metrics.py
+python code/comparative_interrater_agreement.py
+python code/compute_averages.py
+```
 ---
 ## Results
 
