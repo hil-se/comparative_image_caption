@@ -187,11 +187,13 @@ def encode_texts(model, processor, captions: list[str], batch_size: int, device)
     import torch
 
     encoded: dict[str, np.ndarray] = {}
+    max_length = int(model.config.text_config.max_position_embeddings)
     for batch_index, batch in enumerate(_chunks(captions, batch_size), start=1):
         inputs = processor(
             text=batch,
             padding=True,
             truncation=True,
+            max_length=max_length,
             return_tensors="pt",
         )
         inputs = {key: value.to(device) for key, value in inputs.items()}
@@ -350,6 +352,7 @@ def main() -> None:
         "requested_revision": args.revision,
         "resolved_revision": getattr(model.config, "_commit_hash", None),
         "projection_dim": projection_dim,
+        "text_max_length": int(model.config.text_config.max_position_embeddings),
         "l2_normalized": True,
         "device": str(device),
         "torch_version": torch.__version__,
