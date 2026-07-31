@@ -26,4 +26,5 @@ python src/clip_embeddings.py \
     --image-cache "${artifact_root}/datasets/coco-cache" \
     --model-name openai/clip-vit-base-patch32 \
     --revision 8092f5b35a22023f7a822152e20837ac59cb91a3 \
-    --batch-size 256
+    --batch-size 256 \
+    --overwrite

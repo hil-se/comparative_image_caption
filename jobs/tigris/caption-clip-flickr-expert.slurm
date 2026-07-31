@@ -27,4 +27,5 @@ python src/clip_embeddings.py \
     --flickr8k-root "${artifact_root}/datasets/flickr8k" \
     --model-name openai/clip-vit-base-patch32 \
     --revision 8092f5b35a22023f7a822152e20837ac59cb91a3 \
-    --batch-size 256
+    --batch-size 256 \
+    --overwrite
