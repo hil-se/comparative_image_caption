@@ -25,9 +25,10 @@ API is documented at https://huggingface.co/docs/transformers/model_doc/clip.
 
 ## Data provenance
 
-VICR image URLs point to the COCO image host and are cached outside Git on
-TIGRIS. The Flickr-Expert records use Flickr8k filenames but their original
-`validatedicr.org` host no longer resolves. The matching Flickr8k files are
+VICR contains 8,990 COCO-hosted images and 1,000 Flickr8k images; the latter
+use the same dead `validatedicr.org` URLs as Flickr-Expert. COCO images are
+cached outside Git on TIGRIS, while both datasets resolve their Flickr images
+from one local Flickr8k archive. The matching Flickr8k files are
 obtained from
 https://github.com/awsaf49/flickr-dataset/releases/download/v1.0/flickr8k.zip,
 and the archive checksum is recorded on TIGRIS.

@@ -132,24 +132,41 @@ def resolve_images(
     retries: int,
 ) -> dict[str, Path]:
     unique_urls = list(dict.fromkeys(image_urls))
-    if dataset_key == "flickr_expert":
+    local_paths: dict[str, Path] = {}
+    validatedicr_urls = [
+        url
+        for url in unique_urls
+        if urlparse(url).hostname in {"validatedicr.org", "www.validatedicr.org"}
+    ]
+    if validatedicr_urls or dataset_key == "flickr_expert":
         if flickr8k_root is None:
             raise ValueError(
                 "--flickr8k-root is required because validatedicr.org is no "
                 "longer a reliable image host"
             )
         index = _flickr_index(flickr8k_root)
-        missing = [url for url in unique_urls if Path(urlparse(url).path).name not in index]
+        urls_to_resolve = (
+            unique_urls if dataset_key == "flickr_expert" else validatedicr_urls
+        )
+        missing = [
+            url
+            for url in urls_to_resolve
+            if Path(urlparse(url).path).name not in index
+        ]
         if missing:
             preview = ", ".join(Path(urlparse(url).path).name for url in missing[:5])
             raise FileNotFoundError(
                 f"Flickr8k root is missing {len(missing)} required images: {preview}"
             )
-        return {
-            url: index[Path(urlparse(url).path).name] for url in unique_urls
+        local_paths = {
+            url: index[Path(urlparse(url).path).name] for url in urls_to_resolve
         }
 
-    destinations = {url: _cache_path(url, image_cache) for url in unique_urls}
+    destinations = {
+        url: _cache_path(url, image_cache)
+        for url in unique_urls
+        if url not in local_paths
+    }
     pending = {
         url: path for url, path in destinations.items() if not _valid_image(path)
     }
@@ -165,7 +182,7 @@ def resolve_images(
                 completed += 1
                 if completed % 250 == 0 or completed == len(futures):
                     print(f"Downloaded {completed}/{len(futures)} images", flush=True)
-    return destinations
+    return {**destinations, **local_paths}
 
 
 def _chunks(values: list[str], size: int) -> Iterable[list[str]]:
