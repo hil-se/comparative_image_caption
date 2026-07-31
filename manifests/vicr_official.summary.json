@@ -1,0 +1,35 @@
+{
+  "cross_split_overlaps": {
+    "train_test": {
+      "image_caption_pairs": 0,
+      "images": 0
+    },
+    "train_val": {
+      "image_caption_pairs": 0,
+      "images": 0
+    },
+    "val_test": {
+      "image_caption_pairs": 0,
+      "images": 0
+    }
+  },
+  "dataset": "VICR",
+  "duplicate_image_caption_pairs": {
+    "test": 0,
+    "train": 0,
+    "val": 0
+  },
+  "manifest": "vicr_official.csv",
+  "manifest_sha256": "928529a2633f9105a0d7680a53325b38168a2dd7e77a70843d629dfe4fd31f10",
+  "source_prefix": "VICR",
+  "split_counts": {
+    "test": 3161,
+    "train": 10175,
+    "val": 2310
+  },
+  "unique_images": {
+    "test": 2000,
+    "train": 6488,
+    "val": 1502
+  }
+}

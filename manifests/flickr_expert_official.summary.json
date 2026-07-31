@@ -1,0 +1,35 @@
+{
+  "cross_split_overlaps": {
+    "train_test": {
+      "image_caption_pairs": 0,
+      "images": 0
+    },
+    "train_val": {
+      "image_caption_pairs": 0,
+      "images": 0
+    },
+    "val_test": {
+      "image_caption_pairs": 0,
+      "images": 0
+    }
+  },
+  "dataset": "FlickrExpert",
+  "duplicate_image_caption_pairs": {
+    "test": 0,
+    "train": 0,
+    "val": 0
+  },
+  "manifest": "flickr_expert_official.csv",
+  "manifest_sha256": "77b2012e92c0640fd7b26270778fb8f81f2058e5efb5e3fe1a2dad18638b5282",
+  "source_prefix": "Flickr8k",
+  "split_counts": {
+    "test": 1161,
+    "train": 3693,
+    "val": 810
+  },
+  "unique_images": {
+    "test": 200,
+    "train": 650,
+    "val": 150
+  }
+}
