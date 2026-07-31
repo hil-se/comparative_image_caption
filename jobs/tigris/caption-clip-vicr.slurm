@@ -25,8 +25,8 @@ python src/clip_embeddings.py \
     --output-dir "${artifact_root}/embeddings/clip-vit-b32" \
     --image-cache "${artifact_root}/datasets/coco-cache" \
     --flickr8k-root "${artifact_root}/datasets/flickr8k" \
+    --coco-root "${artifact_root}/datasets/coco2014/val2014" \
     --model-name openai/clip-vit-base-patch32 \
     --revision 8092f5b35a22023f7a822152e20837ac59cb91a3 \
     --batch-size 256 \
-    --download-workers 4 \
     --overwrite

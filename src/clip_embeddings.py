@@ -111,15 +111,15 @@ def _download_one(url: str, destination: Path, retries: int) -> Path:
     raise RuntimeError(f"Unable to download {url}: {last_error}")
 
 
-def _flickr_index(root: Path) -> dict[str, Path]:
+def _image_index(root: Path, label: str) -> dict[str, Path]:
     if not root.is_dir():
-        raise FileNotFoundError(f"Flickr8k image root not found: {root}")
+        raise FileNotFoundError(f"{label} image root not found: {root}")
     result: dict[str, Path] = {}
     for extension in ("*.jpg", "*.jpeg", "*.png"):
         for path in root.rglob(extension):
             result.setdefault(path.name, path)
     if not result:
-        raise FileNotFoundError(f"No images found beneath {root}")
+        raise FileNotFoundError(f"No {label} images found beneath {root}")
     return result
 
 
@@ -128,6 +128,7 @@ def resolve_images(
     image_urls: Iterable[str],
     image_cache: Path,
     flickr8k_root: Path | None,
+    coco_root: Path | None,
     workers: int,
     retries: int,
 ) -> dict[str, Path]:
@@ -144,7 +145,7 @@ def resolve_images(
                 "--flickr8k-root is required because validatedicr.org is no "
                 "longer a reliable image host"
             )
-        index = _flickr_index(flickr8k_root)
+        index = _image_index(flickr8k_root, "Flickr8k")
         urls_to_resolve = (
             unique_urls if dataset_key == "flickr_expert" else validatedicr_urls
         )
@@ -161,6 +162,30 @@ def resolve_images(
         local_paths = {
             url: index[Path(urlparse(url).path).name] for url in urls_to_resolve
         }
+
+    coco_urls = [
+        url
+        for url in unique_urls
+        if urlparse(url).hostname == "images.cocodataset.org"
+    ]
+    if coco_root is not None and coco_urls:
+        index = _image_index(coco_root, "COCO")
+        missing = [
+            url
+            for url in coco_urls
+            if Path(urlparse(url).path).name not in index
+        ]
+        if missing:
+            preview = ", ".join(Path(urlparse(url).path).name for url in missing[:5])
+            raise FileNotFoundError(
+                f"COCO root is missing {len(missing)} required images: {preview}"
+            )
+        local_paths.update(
+            {
+                url: index[Path(urlparse(url).path).name]
+                for url in coco_urls
+            }
+        )
 
     destinations = {
         url: _cache_path(url, image_cache)
@@ -260,6 +285,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--image-cache", type=Path, required=True)
     parser.add_argument("--flickr8k-root", type=Path)
+    parser.add_argument("--coco-root", type=Path)
     parser.add_argument("--model-name", default="openai/clip-vit-base-patch32")
     parser.add_argument("--revision", default="main")
     parser.add_argument("--batch-size", type=int, default=128)
@@ -306,6 +332,7 @@ def main() -> None:
         image_urls,
         args.image_cache.resolve(),
         args.flickr8k_root.resolve() if args.flickr8k_root else None,
+        args.coco_root.resolve() if args.coco_root else None,
         args.download_workers,
         args.download_retries,
     )
