@@ -37,3 +37,6 @@ The generated image files, model cache, CLIP embeddings, logs, checkpoints,
 and full result CSVs live beneath
 `/home/xx4455/paper-projects/artifacts/comparative_image_caption` and are not
 committed to Git.
+
+The completed aggregate analysis and interpretation are recorded in
+[`extension_results.md`](extension_results.md).
