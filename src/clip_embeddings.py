@@ -256,7 +256,12 @@ def main() -> None:
     args = parse_args()
     import torch
     import transformers
-    from transformers import CLIPModel, CLIPProcessor
+    from transformers import (
+        CLIPImageProcessor,
+        CLIPModel,
+        CLIPProcessor,
+        CLIPTokenizer,
+    )
 
     if args.batch_size < 1:
         raise ValueError("--batch-size must be positive")
@@ -285,8 +290,19 @@ def main() -> None:
         args.download_workers,
         args.download_retries,
     )
-    processor = CLIPProcessor.from_pretrained(
+    # Build the processor from the slow tokenizer explicitly.  Some released
+    # CLIP repositories still contain a pre-4.17 fast-tokenizer artifact that
+    # current Transformers versions reject even though the vocabulary and
+    # merges are valid.  The slow tokenizer is the reference implementation
+    # and produces the same CLIP token IDs without depending on that artifact.
+    tokenizer = CLIPTokenizer.from_pretrained(
         args.model_name, revision=args.revision
+    )
+    image_processor = CLIPImageProcessor.from_pretrained(
+        args.model_name, revision=args.revision
+    )
+    processor = CLIPProcessor(
+        tokenizer=tokenizer, image_processor=image_processor
     )
     model = CLIPModel.from_pretrained(args.model_name, revision=args.revision)
     model.eval().to(device)
@@ -338,6 +354,7 @@ def main() -> None:
         "device": str(device),
         "torch_version": torch.__version__,
         "transformers_version": transformers.__version__,
+        "tokenizer_class": type(tokenizer).__name__,
         "python_version": sys.version,
         "record_counts": {
             split: len(records_by_split[split]) for split in SPLITS
