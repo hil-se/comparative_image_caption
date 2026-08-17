@@ -70,6 +70,15 @@ def _parse_int_list(value: str) -> tuple[int, ...]:
     return result
 
 
+def _parse_float_list(value: str) -> tuple[float, ...]:
+    result = tuple(float(item.strip()) for item in value.split(",") if item.strip())
+    if not result:
+        raise argparse.ArgumentTypeError("expected at least one number")
+    if any(item <= 0 for item in result):
+        raise argparse.ArgumentTypeError("N values must be positive")
+    return result
+
+
 def load_splits(
     dataset_key: str,
     embeddings_dir: Path,
@@ -424,7 +433,7 @@ def run_pairwise(
     splits: dict[str, SplitData],
     evaluation_pairs: dict[str, PairData],
     objectives: Iterable[str],
-    n_values: Iterable[int],
+    n_values: Iterable[float],
     seeds: Iterable[int],
     epochs: int,
     batch_size: int,
@@ -441,11 +450,13 @@ def run_pairwise(
     pairwise_objectives = [name for name in objectives if name != "regression"]
     for n_value in n_values:
         for run_index, seed in enumerate(seeds, start=1):
+            train_pair_count = max(1, round(n_value * len(splits["train"])))
+            val_pair_count = max(1, round(n_value * len(splits["val"])))
             train_pairs = generate_general_pairs(
-                splits["train"], n_value * len(splits["train"]), seed
+                splits["train"], train_pair_count, seed
             )
             val_pairs = generate_general_pairs(
-                splits["val"], n_value * len(splits["val"]), seed + 1_000_000
+                splits["val"], val_pair_count, seed + 1_000_000
             )
             for objective in pairwise_objectives:
                 tf.keras.backend.clear_session()
@@ -556,7 +567,12 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--rating-mode", choices=("rounded_mean", "mean"), default="rounded_mean")
     parser.add_argument("--objectives", default=",".join(OBJECTIVES))
-    parser.add_argument("--n-values", type=_parse_int_list, default=(1, 2, 3, 4, 5))
+    parser.add_argument(
+        "--n-values",
+        type=_parse_float_list,
+        default=(1.0, 2.0, 3.0, 4.0, 5.0),
+        help="normalized pair budgets; each N uses round(N * split size) pairs",
+    )
     parser.add_argument("--seeds", type=_parse_int_list, default=tuple(range(10)))
     parser.add_argument("--epochs", type=int, default=500)
     parser.add_argument("--batch-size", type=int, default=256)

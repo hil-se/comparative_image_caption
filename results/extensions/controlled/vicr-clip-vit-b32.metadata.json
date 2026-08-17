@@ -1,0 +1,50 @@
+{
+  "batch_size": 256,
+  "dataset": "VICR",
+  "embedding_tag": "openai-clip-vit-base-patch32",
+  "epochs": 500,
+  "hostname": "gh-a-114.rc.rit.edu",
+  "include_same_image_models": true,
+  "learning_rate": 0.001,
+  "margin": 1.0,
+  "n_values": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "objectives": [
+    "regression",
+    "hinge",
+    "bradley_terry"
+  ],
+  "patience": 15,
+  "platform": "Linux-6.18.34-1.el9.aarch64-aarch64-with-glibc2.34",
+  "rating_mode": "rounded_mean",
+  "repository_commit": "53692c04aa61d13ec345c8f00b714366c50cb61e",
+  "representation": "clip-vit-b32",
+  "result_sha256": "3dc4ec20bdf5c336cb91266c5498475bf57191eded1dd9cf82e08c98b9144da1",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "slurm_job_id": "23438",
+  "source_sha256": {
+    "test": "af2c5eef9f6a572ac9cd5d8af6d8b090c59caab28969856b8ec509a4887a02b1",
+    "train": "f1d098e801c38c1f7f77d63018a0c038610e6d9fff3b472bc85bf5ef5e35e6a0",
+    "val": "530d5f4937fcb613001b3d1b92a7c7df6b45144a2fd12dfb1c5c37f20c1f0d69"
+  },
+  "tensorflow_version": "2.16.1",
+  "visible_gpus": [
+    "/physical_device:GPU:0"
+  ]
+}

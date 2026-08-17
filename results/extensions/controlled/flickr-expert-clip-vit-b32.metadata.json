@@ -1,0 +1,50 @@
+{
+  "batch_size": 256,
+  "dataset": "FlickrExpert",
+  "embedding_tag": "openai-clip-vit-base-patch32",
+  "epochs": 500,
+  "hostname": "gh-a-116.rc.rit.edu",
+  "include_same_image_models": true,
+  "learning_rate": 0.001,
+  "margin": 1.0,
+  "n_values": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "objectives": [
+    "regression",
+    "hinge",
+    "bradley_terry"
+  ],
+  "patience": 15,
+  "platform": "Linux-6.18.34-1.el9.aarch64-aarch64-with-glibc2.34",
+  "rating_mode": "rounded_mean",
+  "repository_commit": "53692c04aa61d13ec345c8f00b714366c50cb61e",
+  "representation": "clip-vit-b32",
+  "result_sha256": "c46191d5d0bb21a126c846cbe950be7bfaadc5451fef7a64a06b02d9f3896dd0",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "slurm_job_id": "23436",
+  "source_sha256": {
+    "test": "33707c2ed79d248af078c8a07588c1c89af3bcf99a05f7009f904a6bc0f1cb93",
+    "train": "b92f26be180f86f7187cd5ba7032368407e9cbd20836e17ec33376e330dd36ed",
+    "val": "c2f3b254c45b768b9c353debf05656a5a1282c7e5e46f446ecb8ef833cda3439"
+  },
+  "tensorflow_version": "2.16.1",
+  "visible_gpus": [
+    "/physical_device:GPU:0"
+  ]
+}

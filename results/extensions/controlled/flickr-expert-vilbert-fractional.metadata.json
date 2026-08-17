@@ -1,0 +1,48 @@
+{
+  "batch_size": 256,
+  "dataset": "FlickrExpert",
+  "embedding_tag": "vilbert",
+  "epochs": 500,
+  "include_same_image_models": false,
+  "learning_rate": 0.001,
+  "margin": 1.0,
+  "metadata_reconstructed": true,
+  "n_values": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "objectives": [
+    "hinge",
+    "bradley_terry"
+  ],
+  "patience": 15,
+  "provenance_note": "Reconstructed from the completed CSV and the matching integer-budget ViLBERT run. The original fractional-run host and Slurm job identifier were not retained and are intentionally not inferred.",
+  "rating_mode": "rounded_mean",
+  "representation": "vilbert",
+  "result_sha256": "512f2ca47316d600058919ecf8420a8fdbf3019acff82789c4b1d0dcf79bcd90",
+  "rows": 180,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "source_sha256": {
+    "test": "073cc35cca348d8d216f05e72b40945694ab3ffd6e4bd8009ede5f1870704793",
+    "train": "b826475b8ff287ca6b81974d3fc58785bd1e739816e5890f91265a70ec01955c",
+    "val": "479520e54624ee5ce5145eec6e094830975e27416ceaa7db0bea54f3dcdd67a1"
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "batch_size": 256,
+  "dataset": "FlickrExpert",
+  "embedding_tag": "vilbert",
+  "epochs": 500,
+  "hostname": "gh-a-115.rc.rit.edu",
+  "include_same_image_models": true,
+  "learning_rate": 0.001,
+  "margin": 1.0,
+  "n_values": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "objectives": [
+    "regression",
+    "hinge",
+    "bradley_terry"
+  ],
+  "patience": 15,
+  "platform": "Linux-6.18.34-1.el9.aarch64-aarch64-with-glibc2.34",
+  "rating_mode": "rounded_mean",
+  "repository_commit": "53692c04aa61d13ec345c8f00b714366c50cb61e",
+  "representation": "vilbert",
+  "result_sha256": "188da77d70e3537c2e2019a3bcea20087a9fd1a5ff44ccc5b14a2ef05d57b7ed",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "slurm_job_id": "23439",
+  "source_sha256": {
+    "test": "073cc35cca348d8d216f05e72b40945694ab3ffd6e4bd8009ede5f1870704793",
+    "train": "b826475b8ff287ca6b81974d3fc58785bd1e739816e5890f91265a70ec01955c",
+    "val": "479520e54624ee5ce5145eec6e094830975e27416ceaa7db0bea54f3dcdd67a1"
+  },
+  "tensorflow_version": "2.16.1",
+  "visible_gpus": [
+    "/physical_device:GPU:0"
+  ]
+}

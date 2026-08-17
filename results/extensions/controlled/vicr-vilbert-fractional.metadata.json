@@ -1,0 +1,48 @@
+{
+  "batch_size": 256,
+  "dataset": "VICR",
+  "embedding_tag": "vilbert",
+  "epochs": 500,
+  "include_same_image_models": false,
+  "learning_rate": 0.001,
+  "margin": 1.0,
+  "metadata_reconstructed": true,
+  "n_values": [
+    0.1,
+    0.2,
+    0.3,
+    0.4,
+    0.5,
+    0.6,
+    0.7,
+    0.8,
+    0.9
+  ],
+  "objectives": [
+    "hinge",
+    "bradley_terry"
+  ],
+  "patience": 15,
+  "provenance_note": "Reconstructed from the completed CSV and the matching integer-budget ViLBERT run. The original fractional-run host and Slurm job identifier were not retained and are intentionally not inferred.",
+  "rating_mode": "rounded_mean",
+  "representation": "vilbert",
+  "result_sha256": "698b0ce6ea1e6f078fbf95f52ba3d0a8933139601bcb3ea4551c5f8a8f421575",
+  "rows": 180,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "source_sha256": {
+    "test": "db52396cecfc238397ab1c360d789e826d5af15f7eabcd2b41736271c88c0413",
+    "train": "5cf87fe3c5542ed010ae0fd28be8548429b7d4436a3084a390d08a935d8a749b",
+    "val": "22f1d4fa7ef8a8e3c9d7da9f8aa2ab774c381325f1ed5dc5b785593fb1b849b2"
+  }
+}
